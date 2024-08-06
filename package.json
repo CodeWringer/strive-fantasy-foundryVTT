@@ -1,0 +1,35 @@
+{
+  "name": "word-generator",
+  "version": "1.0.8",
+  "description": "Adds a means of generating names semi-randomly, based on a provided sample set, via a dedicated menu.",
+  "main": "word-generator.js",
+  "scripts": {
+    "build": "node ./npm-scripts/build.mjs",
+    "sass:transpile": "sass ./presentation/styles/main.scss ./presentation/styles/main.css",
+    "sass:transpile-and-watch": "sass -w ./presentation/styles/ ./presentation/styles",
+    "test": "mocha ./test/**/*.[m]js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeWringer/word-generator-foundryVTT.git"
+  },
+  "keywords": [
+    "FoundryVTT"
+  ],
+  "author": "Nicolas H.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeWringer/word-generator-foundryVTT/issues"
+  },
+  "homepage": "https://github.com/CodeWringer/word-generator-foundryVTT#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "fs-extra": "^10.1.0",
+    "mocha": "^9.2.2",
+    "node-zip": "^1.1.1",
+    "sass": "^1.51.0",
+    "should": "^13.2.3",
+    "should-sinon": "0.0.6",
+    "sinon": "^13.0.2"
+  }
+}

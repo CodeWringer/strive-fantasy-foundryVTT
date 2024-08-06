@@ -1,0 +1,18 @@
+# IDE
+.idea/
+.vs/
+
+# Node Modules
+node_modules/
+npm-debug.log
+
+# Foundry
+*.lock
+
+# Generated
+build/
+*.css
+*.css.map
+
+# User
+todo*

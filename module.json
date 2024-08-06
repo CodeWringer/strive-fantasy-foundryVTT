@@ -1,0 +1,70 @@
+{
+  "id": "strive-fantasy-module",
+  "title": "STRIVE Fantasy Module",
+  "description": "Adds the fantasy module for STRIVE.",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Nicolas H.",
+      "url": "https://github.com/CodeWringer",
+      "discord": "Krubi#1695",
+      "flags": {}
+    }
+  ],
+  "compatibility": {
+    "minimum": 11,
+    "verified": 12.330
+  },
+  "esmodules": [
+    "module.mjs"
+  ],
+  "packs": [
+    {
+      "name": "fantasyassets",
+      "label": "Fantasy Assets",
+      "path": "packs/fantasy-assets",
+      "system": "strive",
+      "type": "Item"
+    },
+    {
+      "name": "fantasyskills",
+      "label": "Fantasy Skills",
+      "path": "packs/fantasy-skills",
+      "system": "strive",
+      "type": "Item"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "STRIVE-Fantasy",
+      "sorting": "a",
+      "packs": [
+        "fantasyassets",
+        "fantasyskills"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "presentation/lang/en.json"
+    }
+  ],
+  "system": ["strive"],
+  "relationships": {
+    "systems": [{
+      "id": "strive",
+      "type": "system",
+      "manifest": "https://github.com/CodeWringer/strive-foundryVTT/releases/latest/download/system.json",
+      "compatibility": {
+        "minimum": "1.6.4",
+        "verified": "1.6.4"
+      }
+    }]
+  },
+  "license": "LICENSE",
+  "url": "https://github.com/CodeWringer/strive-fantasy-foundryVTT",
+  "manifest": "https://github.com/CodeWringer/strive-fantasy-foundryVTT/releases/latest/download/module.json",
+  "download": "https://github.com/CodeWringer/strive-fantasy-foundryVTT/releases/latest/download/module.zip"
+}

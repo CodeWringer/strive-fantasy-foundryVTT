@@ -1,0 +1,12 @@
+{
+  "strive-fantasy": {
+    "character": {
+      "attribute": {
+        "arcana": {
+          "label": "Arcana",
+          "abbreviation": "Arc"
+        }
+      }
+    }
+  }
+}
