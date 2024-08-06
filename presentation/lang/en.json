@@ -6,6 +6,18 @@
           "label": "Arcana",
           "abbreviation": "Arc"
         }
+      },
+      "magic": {
+        "stamina": {
+          "label": "Magic Stamina",
+          "maximum": "Max. Magic Stamina"
+        },
+        "school": "Magic School"
+      },
+      "skill": {
+        "properties": {
+          "magicSchool": "Magic School"
+        }
       }
     }
   }

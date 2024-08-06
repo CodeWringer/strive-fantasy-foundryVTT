@@ -1,0 +1,28 @@
+{{!--
+viewModel: ViewModel
+--}}
+<div id="{{viewModel.id}}" class="sheet-block">
+  {{!-- Max Magic Stamina --}}
+  <div class="flex flex-row flex-middle flex-right">
+    <i id="{{viewModel.id}}-max-magic-stamina-info" class="far fa-question-circle info-button"></i>
+    {{#> labeledControl viewModel=viewModel.vmMaxMagicStamina localizedIconToolTip=(localize
+    "system.character.magic.stamina.maximum") iconClass="ico-brain-limit-solid" cssClass="width-lg" }}
+    {{> inputNumberSpinner }}
+    {{/labeledControl}}
+    {{#> labeledControl viewModel=viewModel.vmMaxMagicStaminaModifier localizedIconToolTip=(localize
+    "system.general.modifier.label") iconClass="ico-modifier-solid" cssClass="width-lg" }}
+    {{> inputNumberSpinner }}
+    {{/labeledControl}}
+    <span class="pad-md font-bold">=</span>
+    <span class="width-md">
+      {{#> readOnlyValue}}{{viewModel.modifiedMaxMagicStamina}}{{/readOnlyValue}}
+    </span>
+  </div>
+  {{!-- Current Magic Stamina --}}
+  <div class="flex flex-row flex-middle flex-right">
+    {{#> labeledControl viewModel=viewModel.vmMagicStamina localizedIconToolTip=(localize
+    "system.character.magic.stamina.label") iconClass="ico-brain-solid" cssClass="width-xl" }}
+    {{> inputNumberSpinner }}
+    {{/labeledControl}}
+  </div>
+</div>
