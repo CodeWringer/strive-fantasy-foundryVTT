@@ -6,7 +6,7 @@ export default class MagicStaminaViewModelFactory {
       id: "vmMagic",
       parent: parent,
     });
-    viewModel.vmMagic = viewModel;
+    parent.vmMagic = viewModel;
 
     viewModel.modifiedMaxMagicStamina = function () {
       return document.magic.modifiedMaxMagicStamina();
@@ -38,12 +38,13 @@ export default class MagicStaminaViewModelFactory {
       },
       min: 0,
     });
-
-    // const o = viewModel.activateListeners;
-    // viewModel.activateListeners = async (html) => {
-    //   await o(html);
-    //   this._activateListeners(viewModel, html);
-    // };
+    viewModel.vmInfo = new game.strive.classDef.viewModel.ViewModel({
+      parent: viewModel,
+      id: "vmInfo",
+    });
+    viewModel.vmInfo.activateListeners = (html) => {
+      this._activateListeners(viewModel, html);
+    };
 
     return viewModel;
   }
