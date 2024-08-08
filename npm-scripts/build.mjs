@@ -7,7 +7,7 @@ import * as nodeZip from 'node-zip';
 
 const BUILD_DIR_NAME = "build";
 const TEMP_DIR_NAME = "__temp";
-const MANIFEST_NAME = "system";
+const MANIFEST_NAME = "module";
 
 const MANIFEST_NAME_WITH_EXTENSION = `${MANIFEST_NAME}.json`;
 const BUILD_DIR_PATH = pathUtil.join(".", BUILD_DIR_NAME);
@@ -42,20 +42,25 @@ export default async function build() {
 async function transpileSass() {
   console.log("Transpiling css");
 
-  const fileName = "game-system";
+  const fileName = "module";
+  const sourceFilePath = `presentation/style/${fileName}.scss`;
 
-  const css = compile(`presentation/style/${fileName}.scss`).css;
-  const cssDestPath = `presentation/style/${fileName}.css`;
-  console.log(`writing css file at '${cssDestPath}'`);
-  await writeFile(cssDestPath, css);
-
-  const buildStyleDir = pathUtil.join(BUILD_DIR_PATH, "presentation/style");
-  console.log(`Ensuring css dir '${buildStyleDir}'`);
-  await fs.ensureDir(buildStyleDir);
-  const buildStyleDest = pathUtil.join(buildStyleDir, `${fileName}.css`);
+  try {
+    const css = compile(sourceFilePath).css;
+    const cssDestPath = `presentation/style/${fileName}.css`;
+    console.log(`writing css file at '${cssDestPath}'`);
+    await writeFile(cssDestPath, css);
   
-  console.log(`Copying css file '${cssDestPath}' to '${buildStyleDest}'`);
-  fs.copySync(cssDestPath, buildStyleDest, false);
+    const buildStyleDir = pathUtil.join(BUILD_DIR_PATH, "presentation/style");
+    console.log(`Ensuring css dir '${buildStyleDir}'`);
+    await fs.ensureDir(buildStyleDir);
+    const buildStyleDest = pathUtil.join(buildStyleDir, `${fileName}.css`);
+    
+    console.log(`Copying css file '${cssDestPath}' to '${buildStyleDest}'`);
+    fs.copySync(cssDestPath, buildStyleDest, false);
+  } catch (error) {
+    console.log(`Failed to transpile - no source file at ${sourceFilePath}?`);
+  }
 }
 
 /**
