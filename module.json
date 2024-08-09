@@ -32,6 +32,13 @@
       "path": "packs/fantasy-skills",
       "system": "strive",
       "type": "Item"
+    },
+    {
+      "name": "fantasybestiary",
+      "label": "Fantasy Bestiary",
+      "path": "packs/fantasy-bestiary",
+      "system": "strive",
+      "type": "Actor"
     }
   ],
   "packFolders": [
@@ -40,6 +47,7 @@
       "sorting": "a",
       "packs": [
         "fantasyassets",
+        "fantasybestiary",
         "fantasyskills"
       ]
     }
