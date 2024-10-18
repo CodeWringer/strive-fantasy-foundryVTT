@@ -1,24 +1,8 @@
-2024/10/14-16:25:56.783 57f4 Recovering log #223
-2024/10/14-16:25:56.783 57f4 Level-0 table #225: started
-2024/10/14-16:25:56.783 57f4 Level-0 table #225: 7744 bytes OK
-2024/10/14-16:25:56.791 57f4 Delete type=0 #223
-2024/10/14-16:25:56.791 57f4 Delete type=3 #222
-2024/10/14-16:25:57.029 592c Moved #225 to level-1 7744 bytes OK: files[ 0 1 1 0 0 0 0 ]
-2024/10/14-16:55:19.506 592c Compacting 1@1 + 1@2 files
-2024/10/14-16:55:19.523 592c Generated table #227@1: 337 keys, 360092 bytes
-2024/10/14-16:55:19.523 592c Compacted 1@1 + 1@2 files => 360092 bytes
-2024/10/14-16:55:19.526 592c compacted to: files[ 0 0 1 0 0 0 0 ]
-2024/10/14-16:55:19.526 592c Delete type=2 #221
-2024/10/14-16:55:19.526 592c Delete type=2 #225
-2024/10/14-17:13:54.878 592c Level-0 table #229: started
-2024/10/14-17:13:54.884 592c Level-0 table #229: 107736 bytes OK
-2024/10/14-17:13:54.889 592c Delete type=0 #226
-2024/10/14-17:13:54.889 592c Manual compaction at level-0 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
-2024/10/14-17:13:54.889 592c Manual compaction at level-1 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at '!actors.items!aohcznDdRVWgANtQ.a4MVq1ubawQIlzSG' @ 2572 : 1
-2024/10/14-17:13:54.889 592c Compacting 1@1 + 1@2 files
-2024/10/14-17:13:54.907 592c Generated table #230@1: 354 keys, 375961 bytes
-2024/10/14-17:13:54.907 592c Compacted 1@1 + 1@2 files => 375961 bytes
-2024/10/14-17:13:54.909 592c compacted to: files[ 0 0 1 0 0 0 0 ]
-2024/10/14-17:13:54.909 592c Delete type=2 #227
-2024/10/14-17:13:54.909 592c Delete type=2 #229
-2024/10/14-17:13:54.925 592c Manual compaction at level-1 from '!actors.items!aohcznDdRVWgANtQ.a4MVq1ubawQIlzSG' @ 2572 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
+2024/10/18-10:53:34.122 1c44 Recovering log #233
+2024/10/18-10:53:34.130 1c44 Delete type=0 #233
+2024/10/18-10:53:34.130 1c44 Delete type=3 #231
+2024/10/18-17:58:00.481 3124 Level-0 table #238: started
+2024/10/18-17:58:00.481 3124 Level-0 table #238: 0 bytes OK
+2024/10/18-17:58:00.487 3124 Delete type=0 #236
+2024/10/18-17:58:00.496 3124 Manual compaction at level-0 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
+2024/10/18-17:58:00.496 3124 Manual compaction at level-1 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
