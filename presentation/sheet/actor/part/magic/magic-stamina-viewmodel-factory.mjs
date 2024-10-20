@@ -54,13 +54,13 @@ export default class MagicStaminaViewModelFactory {
       .map(component => {
         return `${game.i18n.localize(component.localizableName)} ${component.value}`;
       }).join(" + ");
-    
-      viewModel.maxMagicStaminaInfoBubble = new game.strive.classDef.InfoBubble({
+
+    viewModel.maxMagicStaminaInfoBubble = new game.strive.classDef.InfoBubble({
       html: html,
       map: [
         {
           element: html.find(`#${viewModel.id}-max-magic-stamina-info`),
-          text: composition
+          text: composition,
         },
       ],
       autoShowType: game.strive.classDef.InfoBubbleAutoShowingTypes.MOUSE_ENTER,
