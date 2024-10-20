@@ -1,3 +1,8 @@
-2024/10/19-21:55:36.731 74cc Recovering log #255
-2024/10/19-21:55:36.737 74cc Delete type=0 #255
-2024/10/19-21:55:36.737 74cc Delete type=3 #254
+2024/10/20-12:18:34.529 1110 Recovering log #260
+2024/10/20-12:18:34.540 1110 Delete type=0 #260
+2024/10/20-12:18:34.540 1110 Delete type=3 #258
+2024/10/20-19:18:57.479 f90 Level-0 table #266: started
+2024/10/20-19:18:57.479 f90 Level-0 table #266: 0 bytes OK
+2024/10/20-19:18:57.484 f90 Delete type=0 #264
+2024/10/20-19:18:57.514 f90 Manual compaction at level-0 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
+2024/10/20-19:18:57.514 f90 Manual compaction at level-1 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
