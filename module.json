@@ -2,7 +2,7 @@
   "id": "strive-fantasy-module",
   "title": "STRIVE Fantasy Module",
   "description": "Adds the fantasy module for STRIVE.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     {
       "name": "Nicolas H.",
@@ -67,7 +67,7 @@
       "manifest": "https://github.com/CodeWringer/strive-foundryVTT/releases/latest/download/system.json",
       "compatibility": {
         "minimum": "1.7.0",
-        "verified": "1.7.0"
+        "verified": "1.7.2"
       }
     }]
   },
