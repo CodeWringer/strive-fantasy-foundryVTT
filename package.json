@@ -1,6 +1,6 @@
 {
   "name": "strive-fantasy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Adds the fantasy module for STRIVE.",
   "scripts": {
     "build": "node ./npm-scripts/build.mjs",
