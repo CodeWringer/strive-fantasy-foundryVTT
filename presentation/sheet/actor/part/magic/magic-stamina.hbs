@@ -4,7 +4,6 @@ viewModel: ViewModel
 <div id="{{viewModel.id}}" class="sheet-block">
   {{!-- Max Magic Stamina --}}
   <div class="flex flex-row flex-middle flex-right">
-    <i id="{{viewModel.id}}-max-magic-stamina-info" class="far fa-question-circle info-button"></i>
     {{#> labeledControl viewModel=viewModel.vmMaxMagicStamina localizedIconToolTip=(localize
     "strive-fantasy.character.magic.stamina.maximum") iconClass="ico-brain-limit-solid" cssClass="width-lg" }}
     {{> inputNumberSpinner }}
@@ -15,7 +14,7 @@ viewModel: ViewModel
     {{/labeledControl}}
     <span class="pad-md font-bold">=</span>
     <span class="width-md">
-      {{#> readOnlyValue}}{{viewModel.modifiedMaxMagicStamina}}{{/readOnlyValue}}
+      {{> readOnlyValue viewModel=viewModel.vmModifiedMaxMagicStamina }}
     </span>
   </div>
   {{!-- Current Magic Stamina --}}
