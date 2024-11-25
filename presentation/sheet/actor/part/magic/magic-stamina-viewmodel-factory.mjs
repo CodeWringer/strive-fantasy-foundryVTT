@@ -1,4 +1,4 @@
-import Ruleset from "../../../../../business/ruleset/ruleset.mjs";
+import RulesetExplainer from "../../../../../business/ruleset/ruleset-explainer.mjs";
 
 export default class MagicStaminaViewModelFactory {
   create(parent, document) {
@@ -20,6 +20,7 @@ export default class MagicStaminaViewModelFactory {
       id: "vmMaxMagicStamina",
       value: document.magic.maxMagicStamina().total,
       isEditable: false,
+      localizedToolTip: new RulesetExplainer().getExplanationForMaxMagicStamina(document),
     });
     viewModel.vmMaxMagicStaminaModifier = new game.strive.classDef.viewModel.InputNumberSpinnerViewModel({
       parent: viewModel,
@@ -38,33 +39,12 @@ export default class MagicStaminaViewModelFactory {
       },
       min: 0,
     });
-    viewModel.vmInfo = new game.strive.classDef.viewModel.ViewModel({
+    viewModel.vmModifiedMaxMagicStamina = new game.strive.classDef.viewModel.ReadOnlyValueViewModel({
+      id: "vmModifiedMaxMagicStamina",
       parent: viewModel,
-      id: "vmInfo",
+      value: viewModel.modifiedMaxMagicStamina,
     });
-    viewModel.vmInfo.activateListeners = (html) => {
-      this._activateListeners(viewModel, html);
-    };
 
     return viewModel;
-  }
-
-  async _activateListeners(viewModel, html) {
-    const composition = new Ruleset().getCharacterMaximumMagicStamina(viewModel.parent.document.document).components
-      .map(component => {
-        return `${game.i18n.localize(component.localizableName)} ${component.value}`;
-      }).join(" + ");
-    
-      viewModel.maxMagicStaminaInfoBubble = new game.strive.classDef.InfoBubble({
-      html: html,
-      map: [
-        {
-          element: html.find(`#${viewModel.id}-max-magic-stamina-info`),
-          text: composition
-        },
-      ],
-      autoShowType: game.strive.classDef.InfoBubbleAutoShowingTypes.MOUSE_ENTER,
-      autoHideType: game.strive.classDef.InfoBubbleAutoHidingTypes.MOUSE_LEAVE,
-    });
   }
 }
