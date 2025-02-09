@@ -1,15 +1,8 @@
-2025/02/01-16:02:29.026 5ea4 Recovering log #401
-2025/02/01-16:02:29.032 5ea4 Delete type=0 #401
-2025/02/01-16:02:29.032 5ea4 Delete type=3 #400
-2025/02/01-21:38:12.419 cf4 Level-0 table #405: started
-2025/02/01-21:38:12.444 cf4 Level-0 table #405: 450030 bytes OK
-2025/02/01-21:38:12.448 cf4 Delete type=0 #403
-2025/02/01-21:38:12.448 cf4 Manual compaction at level-0 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
-2025/02/01-21:38:12.448 cf4 Manual compaction at level-1 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at '!folders!q9veTcLF4hdzyeOo' @ 3420 : 1
-2025/02/01-21:38:12.448 cf4 Compacting 1@1 + 1@2 files
-2025/02/01-21:38:12.465 cf4 Generated table #406@1: 490 keys, 513124 bytes
-2025/02/01-21:38:12.465 cf4 Compacted 1@1 + 1@2 files => 513124 bytes
-2025/02/01-21:38:12.467 cf4 compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/02/01-21:38:12.467 cf4 Delete type=2 #395
-2025/02/01-21:38:12.467 cf4 Delete type=2 #405
-2025/02/01-21:38:12.476 cf4 Manual compaction at level-1 from '!folders!q9veTcLF4hdzyeOo' @ 3420 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
+2025/02/09-12:48:19.533 14a4 Recovering log #404
+2025/02/09-12:48:19.539 14a4 Delete type=0 #404
+2025/02/09-12:48:19.539 14a4 Delete type=3 #402
+2025/02/09-16:24:00.411 1d04 Level-0 table #410: started
+2025/02/09-16:24:00.411 1d04 Level-0 table #410: 0 bytes OK
+2025/02/09-16:24:00.416 1d04 Delete type=0 #408
+2025/02/09-16:24:00.434 1d04 Manual compaction at level-0 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
+2025/02/09-16:24:00.434 1d04 Manual compaction at level-1 from '!actors!1Dt45wrKysyTOd9w' @ 72057594037927935 : 1 .. '!folders!ysRlByzYOk6p7cUl' @ 0 : 0; will stop at (end)
