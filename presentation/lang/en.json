@@ -1,5 +1,8 @@
 {
   "strive-fantasy": {
+    "general": {
+      "base": "Base"
+    },
     "character": {
       "attribute": {
         "arcana": {
