@@ -25,6 +25,6 @@ export default class RulesetExplainer {
         return `${htmlEscapedComponent} (${component.value})`;
       }).join(" + ");
 
-    return `${composition} = ${maxMagicStamina.total}`;
+    return `(${composition}) * 2 = ${maxMagicStamina.total}`;
   }
 }
