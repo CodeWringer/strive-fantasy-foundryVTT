@@ -22,25 +22,32 @@ export default class Ruleset {
     const type = actor.type.toLowerCase();
     if (type !== ACTOR_TYPES.PC && type !== ACTOR_TYPES.NPC) throw new Error("Only PC and NPC type actors allowed");
 
-    const arcanaLevel = ruleset.getEffectiveAttributeModifiedLevel(ATTRIBUTES.arcana, actor) * 2;
-    let total = arcanaLevel;
-    
-    const components = [
-      new game.strive.classDef.SumComponent(ATTRIBUTES.arcana.name, ATTRIBUTES.arcana.localizableName, arcanaLevel),
-    ];
+    const arcanaLevel = ruleset.getEffectiveAttributeModifiedLevel(ATTRIBUTES.arcana, actor);
+    const components = [];
 
+    if (arcanaLevel > 0) {
+      components.push(
+        new game.strive.classDef.SumComponent("base", "strive-fantasy.general.base", 4),
+      );
+    }
+
+    components.push(
+      new game.strive.classDef.SumComponent(ATTRIBUTES.arcana.name, ATTRIBUTES.arcana.localizableName, arcanaLevel),
+    );
+    
+    const Sum = new game.strive.classDef.Sum(components);
+    
     const skills = actor.items.filter(it => it.type === ITEM_TYPES.SKILL);
     for (const skill of skills) {
       const transientSkill = skill.getTransientObject();
       if (transientSkill.isMagicSchool() !== true) continue;
 
-      const skillLevel = ruleset.getEffectiveSkillModifiedLevel(skill, actor);
+      const skillLevel = skill.getTransientObject().level;
       components.push(new game.strive.classDef.SumComponent(transientSkill.name, transientSkill.localizableName, skillLevel));
-      total += skillLevel;
     }
 
     return {
-      total: total,
+      total: parseInt(Math.ceil(Sum.total * 2)),
       components: components,
     };
   }
