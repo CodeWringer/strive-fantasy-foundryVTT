@@ -1,6 +1,6 @@
 {
   "name": "strive-fantasy",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Adds the fantasy module for STRIVE.",
   "scripts": {
     "build": "node ./npm-scripts/build.mjs",
@@ -14,7 +14,7 @@
   "keywords": [
     "FoundryVTT"
   ],
-  "author": "Nicolas H.",
+  "author": "Nicolas 'Krubi' H.",
   "license": "GNU GPL 3.0",
   "bugs": {
     "url": "https://github.com/CodeWringer/strive-fantasy-foundryVTT/issues"
