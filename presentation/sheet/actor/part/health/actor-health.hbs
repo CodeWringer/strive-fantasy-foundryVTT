@@ -8,9 +8,9 @@ cssClass: {undefined | String}
     {{#> header1 showFancyFont=viewModel.showFancyFont}}{{localize "system.character.health.healthStats"}}{{/header1}}
     <div class="flex flex-column auto-margin-v-md">
       {{!-- Row --}}
-      <div class="grid-3col grid-gap-md">
+      <div class="flex flex-justify flex-row flex-wrap">
         {{!-- HP --}}
-        <div class="flex flex-row sheet-block">
+        <div class="sheet-block flex flex-row">
           <div class="flex flex-column">
             {{!-- Max HP --}}
             <div class="flex flex-row flex-middle flex-right">
@@ -38,7 +38,8 @@ cssClass: {undefined | String}
               {{/labeledControl}}
             </div>
           </div>
-          <div class="flex flex-column flex-right">
+          <div class="flex flex-column">
+            <span class="flex-grow"></span>
             {{!-- Adjust button --}}
             {{> button viewModel=viewModel.vmAdjustHp heavy=true fill=false skipPadding=true }}
           </div>
