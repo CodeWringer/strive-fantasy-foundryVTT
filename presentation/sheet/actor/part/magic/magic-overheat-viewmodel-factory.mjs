@@ -1,4 +1,5 @@
 import { MagicOverHeatThresholds } from "../../../../../business/document/const/magic-overheat-thresholds.mjs";
+import Ruleset from "../../../../../business/ruleset/ruleset.mjs";
 
 export default class MagicOverheatViewModelFactory {
   create(parent, document) {
@@ -34,6 +35,11 @@ export default class MagicOverheatViewModelFactory {
     viewModel.isActiveBroiling = currentHeat.name === MagicOverHeatThresholds.BROILING.name;
     viewModel.isActiveConsuming = currentHeat.name === MagicOverHeatThresholds.CONSUMING.name;
 
+    const ATTRIBUTES = game.strive.const.ATTRIBUTES; 
+    const ruleset = new game.strive.classDef.Ruleset(); 
+    const arcanaLevel = ruleset.getEffectiveAttributeModifiedLevel(ATTRIBUTES.arcana, document);
+    viewModel.showRangeSlider = (arcanaLevel > 0);
+
     viewModel.vmOverheatReminder = new game.strive.classDef.viewModel.ViewModel({
       id: "vmOverheatReminder",
       parent: viewModel,
@@ -43,84 +49,88 @@ export default class MagicOverheatViewModelFactory {
       id: "vmOverheat",
       parent: viewModel,
       value: document.magic.overheat.current(),
+      min: 0,
       isEditable: true,
       localizedToolTip: game.i18n.localize("strive-fantasy.character.magic.overheat.label"),
       onChange: (_, newValue) => {
         document.magic.overheat.current(newValue);
       },
     });
-    viewModel.vmOverheatSlider = new game.strive.classDef.viewModel.InputSliderViewModel({
-      id: "vmOverheatSlider",
-      parent: viewModel,
-      min: 0,
-      max: viewModel.overheatConsuming,
-      value: document.magic.overheat.current(),
-      isEditable: true,
-      localizedToolTip: game.strive.util.string.format2(
-        game.i18n.localize("strive-fantasy.character.magic.overheat.withPlaceholders"),
-        {
-          current: document.magic.overheat.current(),
-          threshold: game.i18n.localize(getThresholdFor(document.magic.overheat.current()).localizableName),
-        }
-      ),
-      onChange: (_, newValue) => {
-        document.magic.overheat.current(newValue);
-      },
-      onInput: (event, viewModel) => {
-        const newValue = event.currentTarget.value;
-        viewModel.localizedToolTip = game.strive.util.string.format2(
+
+    if (viewModel.showRangeSlider) {
+      viewModel.vmOverheatSlider = new game.strive.classDef.viewModel.InputSliderViewModel({
+        id: "vmOverheatSlider",
+        parent: viewModel,
+        min: 0,
+        max: viewModel.overheatConsuming,
+        value: document.magic.overheat.current(),
+        isEditable: true,
+        localizedToolTip: game.strive.util.string.format2(
           game.i18n.localize("strive-fantasy.character.magic.overheat.withPlaceholders"),
           {
-            current: newValue,
-            threshold: game.i18n.localize(getThresholdFor(newValue).localizableName),
+            current: document.magic.overheat.current(),
+            threshold: game.i18n.localize(getThresholdFor(document.magic.overheat.current()).localizableName),
           }
-        )
-      },
-    });
-    viewModel.vmThresholdCold = new game.strive.classDef.viewModel.ViewModel({
-      id: "vmThresholdCold",
-      parent: viewModel,
-      localizedToolTip: viewModel.showReminders ? game.strive.util.string.format(
-        game.i18n.localize("strive-fantasy.character.magic.overheat.coldWithRangeReminder"),
-        `0-${viewModel.overheatSmoldering - 1}`
-      ): game.strive.util.string.format(
-        game.i18n.localize("strive-fantasy.character.magic.overheat.coldWithRange"),
-        `0-${viewModel.overheatSmoldering - 1}`
-      ),
-    });
-    viewModel.vmThresholdSmoldering = new game.strive.classDef.viewModel.ViewModel({
-      id: "vmThresholdSmoldering",
-      parent: viewModel,
-      localizedToolTip: viewModel.showReminders ? game.strive.util.string.format(
-        game.i18n.localize("strive-fantasy.character.magic.overheat.smolderingWithRangeReminder"),
-        `${viewModel.overheatSmoldering}-${viewModel.overheatBroiling - 1}`
-      ) : game.strive.util.string.format(
-        game.i18n.localize("strive-fantasy.character.magic.overheat.smolderingWithRange"),
-        `${viewModel.overheatSmoldering}-${viewModel.overheatBroiling - 1}`
-      ),
-    });
-    viewModel.vmThresholdBroiling = new game.strive.classDef.viewModel.ViewModel({
-      id: "vmThresholdBroiling",
-      parent: viewModel,
-      localizedToolTip: viewModel.showReminders ? game.strive.util.string.format(
-        game.i18n.localize("strive-fantasy.character.magic.overheat.broilingWithRangeReminder"),
-        `${viewModel.overheatBroiling}-${viewModel.overheatConsuming - 1}`
-      ) : game.strive.util.string.format(
-        game.i18n.localize("strive-fantasy.character.magic.overheat.broilingWithRange"),
-        `${viewModel.overheatBroiling}-${viewModel.overheatConsuming - 1}`
-      ),
-    });
-    viewModel.vmThresholdConsuming = new game.strive.classDef.viewModel.ViewModel({
-      id: "vmThresholdConsuming",
-      parent: viewModel,
-      localizedToolTip: viewModel.showReminders ? game.strive.util.string.format(
-        game.i18n.localize("strive-fantasy.character.magic.overheat.consumingWithRangeReminder"),
-        `${viewModel.overheatConsuming}+`
-      ) : game.strive.util.string.format(
-        game.i18n.localize("strive-fantasy.character.magic.overheat.consumingWithRange"),
-        `${viewModel.overheatConsuming}+`
-      ),
-    });
+        ),
+        onChange: (_, newValue) => {
+          document.magic.overheat.current(newValue);
+        },
+        onInput: (event, viewModel) => {
+          const newValue = event.currentTarget.value;
+          viewModel.localizedToolTip = game.strive.util.string.format2(
+            game.i18n.localize("strive-fantasy.character.magic.overheat.withPlaceholders"),
+            {
+              current: newValue,
+              threshold: game.i18n.localize(getThresholdFor(newValue).localizableName),
+            }
+          )
+        },
+      });
+      viewModel.vmThresholdCold = new game.strive.classDef.viewModel.ViewModel({
+        id: "vmThresholdCold",
+        parent: viewModel,
+        localizedToolTip: viewModel.showReminders ? game.strive.util.string.format(
+          game.i18n.localize("strive-fantasy.character.magic.overheat.coldWithRangeReminder"),
+          `0-${viewModel.overheatSmoldering - 1}`
+        ): game.strive.util.string.format(
+          game.i18n.localize("strive-fantasy.character.magic.overheat.coldWithRange"),
+          `0-${viewModel.overheatSmoldering - 1}`
+        ),
+      });
+      viewModel.vmThresholdSmoldering = new game.strive.classDef.viewModel.ViewModel({
+        id: "vmThresholdSmoldering",
+        parent: viewModel,
+        localizedToolTip: viewModel.showReminders ? game.strive.util.string.format(
+          game.i18n.localize("strive-fantasy.character.magic.overheat.smolderingWithRangeReminder"),
+          `${viewModel.overheatSmoldering}-${viewModel.overheatBroiling - 1}`
+        ) : game.strive.util.string.format(
+          game.i18n.localize("strive-fantasy.character.magic.overheat.smolderingWithRange"),
+          `${viewModel.overheatSmoldering}-${viewModel.overheatBroiling - 1}`
+        ),
+      });
+      viewModel.vmThresholdBroiling = new game.strive.classDef.viewModel.ViewModel({
+        id: "vmThresholdBroiling",
+        parent: viewModel,
+        localizedToolTip: viewModel.showReminders ? game.strive.util.string.format(
+          game.i18n.localize("strive-fantasy.character.magic.overheat.broilingWithRangeReminder"),
+          `${viewModel.overheatBroiling}-${viewModel.overheatConsuming - 1}`
+        ) : game.strive.util.string.format(
+          game.i18n.localize("strive-fantasy.character.magic.overheat.broilingWithRange"),
+          `${viewModel.overheatBroiling}-${viewModel.overheatConsuming - 1}`
+        ),
+      });
+      viewModel.vmThresholdConsuming = new game.strive.classDef.viewModel.ViewModel({
+        id: "vmThresholdConsuming",
+        parent: viewModel,
+        localizedToolTip: viewModel.showReminders ? game.strive.util.string.format(
+          game.i18n.localize("strive-fantasy.character.magic.overheat.consumingWithRangeReminder"),
+          `${viewModel.overheatConsuming}+`
+        ) : game.strive.util.string.format(
+          game.i18n.localize("strive-fantasy.character.magic.overheat.consumingWithRange"),
+          `${viewModel.overheatConsuming}+`
+        ),
+      });
+    }
 
     return viewModel;
   }
