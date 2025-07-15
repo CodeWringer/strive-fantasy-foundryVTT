@@ -1,0 +1,28 @@
+{{!--
+viewModel: ViewModel
+--}}
+<div id="{{viewModel.id}}" class="sheet-block flex flex-column flex-grow flex-center">
+  <div class="fill" style="width: calc(100% - 32px);">
+    <div class="flex flex-row fill" style="position: relative; height: 32px;">
+      <div id="{{viewModel.vmThresholdCold.id}}" class="flex flex-column" style="position: absolute; left: -16px;">
+        <i class="ico dark ico-magic-overheat-cold-solid{{#if viewModel.isActiveCold}} active{{/if}}" style="height: 32px;"></i>
+      </div>
+      <div id="{{viewModel.vmThresholdSmoldering.id}}" class="flex flex-column" style="position: absolute; left: calc({{viewModel.overheatSmolderingPercentage}}% - 16px);">
+        <i class="ico dark ico-magic-overheat-smoldering-solid{{#if viewModel.isActiveSmoldering}} active{{/if}}" style="height: 32px;"></i>
+      </div>
+      <div id="{{viewModel.vmThresholdBroiling.id}}" class="flex flex-column" style="position: absolute; left: calc({{viewModel.overheatBroilingPercentage}}% - 16px);">
+        <i class="ico dark ico-magic-overheat-broiling-solid{{#if viewModel.isActiveBroiling}} active{{/if}}" style="height: 32px;"></i>
+      </div>
+      <div id="{{viewModel.vmThresholdConsuming.id}}" class="flex flex-column" style="position: absolute; left: calc(100% - 16px);">
+        <i class="ico dark ico-magic-overheat-consuming-solid{{#if viewModel.isActiveConsuming}} active{{/if}}" style="height: 32px;"></i>
+      </div>
+    </div>
+    {{> inputSlider viewModel=viewModel.vmOverheatSlider }}
+  </div>
+  <div class="flex flex-row ">
+    <i id="{{viewModel.vmOverheatReminder.id}}" class="ico dark ico-gauge-line" style="width: 26px; height: 26px;"></i>
+    <span class="width-md">
+      {{> inputNumberSpinner viewModel=viewModel.vmOverheat cssClass="" }}
+    </span>
+  </div>
+</div>

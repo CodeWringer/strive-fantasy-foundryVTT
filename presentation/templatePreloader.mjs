@@ -16,7 +16,7 @@ const basePathPresentation = `${basePath}/presentation`;
 
 export const TEMPLATES = {
   ACTOR_HEALTH: `${basePathPresentation}/sheet/actor/part/health/actor-health.hbs`,
-  ACTOR_MAGIC_STAMINA: `${basePathPresentation}/sheet/actor/part/magic/magic-stamina.hbs`,
+  ACTOR_MAGIC_OVERHEAT: `${basePathPresentation}/sheet/actor/part/magic/magic-overheat.hbs`,
 }
 
 /**

@@ -4,8 +4,8 @@
   "description": "Adds the fantasy module for STRIVE.",
   "scripts": {
     "build": "node ./npm-scripts/build.mjs",
-    "sass:transpile": "sass ./presentation/styles/main.scss ./presentation/styles/main.css",
-    "sass:transpile-and-watch": "sass -w ./presentation/styles/ ./presentation/styles"
+    "sass:transpile": "sass ./presentation/style/strive-fantasy-module.scss ./presentation/style/strive-fantasy-module.css",
+    "sass:transpile-and-watch": "sass -w ./presentation/style/ ./presentation/style"
   },
   "repository": {
     "type": "git",

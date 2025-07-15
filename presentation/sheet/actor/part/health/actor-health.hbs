@@ -8,7 +8,7 @@ cssClass: {undefined | String}
     {{#> header1 showFancyFont=viewModel.showFancyFont}}{{localize "system.character.health.healthStats"}}{{/header1}}
     <div class="flex flex-column auto-margin-v-md">
       {{!-- Row --}}
-      <div class="flex flex-justify flex-row flex-wrap">
+      <div class="flex flex-justify flex-row flex-wrap auto-margin-h-md">
         {{!-- HP --}}
         <div class="sheet-block flex flex-row">
           <div class="flex flex-column">
@@ -66,9 +66,9 @@ cssClass: {undefined | String}
             {{/labeledControl}}
           </div>
         </div>
-        {{!-- Magic Stamina --}}
-        {{#with viewModel.magicStaminaTemplate as | template |}}
-          {{> (template) viewModel=../viewModel.vmMagicStamina }}
+        {{!-- Magic Overheat --}}
+        {{#with viewModel.magicOverheatTemplate as | template |}}
+          {{> (template) viewModel=../viewModel.vmMagicOverheat }}
         {{/with}}
       </div>
       {{!-- Death's Door --}}

@@ -11,9 +11,22 @@
         }
       },
       "magic": {
-        "stamina": {
-          "label": "Magic Stamina",
-          "maximum": "Max. Magic Stamina"
+        "overheat": {
+          "label": "Magic Overheat",
+          "withPlaceholders": "%{current} Magic Overheat (%{threshold})",
+          "reminder": "<b>Magic Overheat</b><br>When a mage casts magic, the Spell Intensity they choose equals the amount of <b>Magic Overheat</b> that builds up within them. A higher <b>Magic Overheat</b> results in increasing penalties.",
+          "cold": "Cold",
+          "coldWithRange": "Cold (%s)",
+          "coldWithRangeReminder": "Cold (%s):<br><ul><li><b>Spell-Backfire</b> on complete failure, only.</li></ul>",
+          "smoldering": "Smoldering",
+          "smolderingWithRange": "Smoldering (%s)",
+          "smolderingWithRangeReminder": "Smoldering (%s):<br><ul><li>Ob for magic tests always increased by <code>+1</code> and <b>Spell-Backfire</b> on less than <code>2</code> hits.</li></ul>",
+          "broiling": "Broiling",
+          "broilingWithRange": "Broiling (%s)",
+          "broilingWithRangeReminder": "Broiling (%s):<br><ul><li>Ob for magic tests always increased by <code>+2</code> and <b>Spell-Backfire</b> on less than <code>3</code> hits.</li><li>For <b>all</b> <i>other</i> tests, <code>-1D</code></li></ul>",
+          "consuming": "Consuming",
+          "consumingWithRange": "Consuming (%s)",
+          "consumingWithRangeReminder": "Consuming (%s):<br><ul><li><code>1D8 + 2</code> Pure damage every Tick</li><li><b>Every</b> further attempt to cast a spell instantly <b>fails</b></li><li>For <b>all</b> <i>other</i> tests, <code>-2D</code></li></ul>"
         },
         "school": "Magic School"
       },

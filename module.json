@@ -18,6 +18,7 @@
   "esmodules": [
     "module.mjs"
   ],
+  "styles": ["presentation/style/strive-fantasy-module.css"],
   "packs": [
     {
       "name": "fantasyassets",
