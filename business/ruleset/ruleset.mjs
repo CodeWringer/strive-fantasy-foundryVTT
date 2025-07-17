@@ -19,12 +19,16 @@ export default class Ruleset {
 
     const type = actor.type.toLowerCase();
     if (type !== ACTOR_TYPES.PC && type !== ACTOR_TYPES.NPC) throw new Error("Only PC and NPC type actors allowed");
+    
+    const transientActor = actor.getTransientObject();
 
+    const overheatModifier = transientActor.magic.overheat.modifier();
     const arcanaLevel = ruleset.getEffectiveAttributeModifiedLevel(ATTRIBUTES.arcana, actor);
     return {
-      smoldering: arcanaLevel + 1,
-      broiling: (arcanaLevel * 2) + 1,
-      consuming: (arcanaLevel * 3) + 1,
+      smoldering: Math.max(1, (arcanaLevel + 1) + overheatModifier),
+      broiling: Math.max(2, ((arcanaLevel * 2) + 1) + overheatModifier),
+      consuming: Math.max(3, ((arcanaLevel * 3) + 1) + overheatModifier),
+      rawConsuming: (arcanaLevel * 3) + 1,
     };
   }
 }

@@ -1,11 +1,22 @@
 {{!--
 viewModel: ViewModel
 --}}
-<div id="{{viewModel.id}}" class="sheet-block flex flex-column flex-grow flex-center">
+<div id="{{viewModel.id}}" class="sheet-block flex flex-column flex-grow flex-middle">
   {{!-- Icon --}}
   <i id="{{viewModel.vmOverheatReminder.id}}" class="ico dark ico-gauge-line" style="width: 48px; height: 48px;"></i>
-  {{!-- Current Value --}}
-  {{> inputNumberSpinner viewModel=viewModel.vmOverheat cssClass="width-md" }}
+  <div class="flex flex-row flex-middle">
+    {{!-- Current Value --}}
+    {{> inputNumberSpinner viewModel=viewModel.vmOverheat cssClass="width-md" }}
+    {{!-- Adjust button --}}
+    {{> button viewModel=viewModel.vmAdjustOverheat heavy=false fill=false skipPadding=true }}
+  </div>
+  {{!-- Divider --}}
+  <span class="margin-t-md margin-b-md" style="height: 1px; width: 100%; background: #000000; background: linear-gradient(90deg,rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 90%);"></span>
+  {{!-- Max Value --}}
+  <div class="flex flex-row flex-middle">
+    {{> inputNumberSpinner viewModel=viewModel.vmMaxOverheat cssClass="width-md" }}
+    <span style="width: 26px;">{{viewModel.maxOverheatModifierString}}</span>
+  </div>
   {{!-- Range --}}
   {{#if viewModel.showRangeSlider}}
   <div style="width: calc(100% - 32px);">

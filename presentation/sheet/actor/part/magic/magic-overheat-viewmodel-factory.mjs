@@ -1,4 +1,5 @@
 import { MagicOverHeatThresholds } from "../../../../../business/document/const/magic-overheat-thresholds.mjs";
+import RulesetExplainer from "../../../../../business/ruleset/ruleset-explainer.mjs";
 
 export default class MagicOverheatViewModelFactory {
   create(parent, document) {
@@ -13,6 +14,7 @@ export default class MagicOverheatViewModelFactory {
     viewModel.overheatSmoldering = document.magic.overheat.smoldering();
     viewModel.overheatBroiling = document.magic.overheat.broiling();
     viewModel.overheatConsuming = document.magic.overheat.consuming();
+    viewModel.rawOverheatConsuming = document.magic.overheat.rawConsuming();
     
     viewModel.overheatSmolderingPercentage = (viewModel.overheatSmoldering / viewModel.overheatConsuming) * 100.0;
     viewModel.overheatBroilingPercentage = (viewModel.overheatBroiling / viewModel.overheatConsuming) * 100.0;
@@ -55,6 +57,56 @@ export default class MagicOverheatViewModelFactory {
         document.magic.overheat.current(newValue);
       },
     });
+    viewModel.vmAdjustOverheat = new game.strive.classDef.viewModel.ButtonViewModel({
+      id: "vmAdjustOverheat",
+      parent: viewModel,
+      localizedToolTip: game.i18n.localize("strive-fantasy.character.magic.overheat.adjust"),
+      iconHtml: '<i class="fas fa-edit"></i>',
+      onClick: async () => {
+        const inputNumber = "inputNumber";
+        const dialog = await new game.strive.classDef.dialog.DynamicInputDialog({
+          easyDismissal: true,
+          focused: inputNumber,
+          inputDefinitions: [
+            new game.strive.classDef.dialog.DynamicInputDefinition({
+              name: inputNumber,
+              localizedLabel: game.i18n.localize("strive-fantasy.character.magic.overheat.adjustInputLabel"),
+              template: game.strive.classDef.viewModel.InputNumberSpinnerViewModel.TEMPLATE,
+              viewModelFactory: (id, parent) => new game.strive.classDef.viewModel.InputNumberSpinnerViewModel({
+                id: id,
+                parent: parent,
+              }),
+              required: true,
+              validationFunc: (value) => { return parseInt(value) !== NaN; },
+            }),
+          ],
+        }).renderAndAwait(true);
+
+        if (dialog.confirmed !== true) return;
+
+        const number = parseInt(dialog[inputNumber]);
+        const newValue = document.magic.overheat.current() + number;
+        const clampedValue = Math.max(0, newValue);
+        document.magic.overheat.current(clampedValue);
+      },
+    });
+    const maxOverheatToolTip = game.strive.util.string.format2(game.i18n.localize("strive-fantasy.character.magic.overheat.maxWithModifier"), {
+      maximum: document.magic.overheat.consuming(),
+      operand: document.magic.overheat.modifier() >= 0 ? "+" : "-",
+      modifier: Math.abs(document.magic.overheat.modifier()),
+      finalValue: document.magic.overheat.consuming(),
+    });
+    const maxOverheatExplanation = new RulesetExplainer().getExplanationForMaxOverheat(document);
+    viewModel.vmMaxOverheat = new game.strive.classDef.viewModel.InputNumberSpinnerViewModel({
+      id: "vmMaxOverheat",
+      parent: viewModel,
+      localizedToolTip: viewModel.showReminders ? `${maxOverheatToolTip}<br><br>${maxOverheatExplanation}` : maxOverheatToolTip,
+      value: document.magic.overheat.consuming(),
+      onChange: (_, newValue) => {
+        document.magic.overheat.modifier(newValue - document.magic.overheat.rawConsuming());
+      },
+    });
+    viewModel.maxOverheatModifierString = `(${document.magic.overheat.modifier() >= 0 ? "+" : "-"}${Math.abs(document.magic.overheat.modifier())})`;
 
     if (viewModel.showRangeSlider) {
       viewModel.vmOverheatSlider = new game.strive.classDef.viewModel.InputSliderViewModel({
