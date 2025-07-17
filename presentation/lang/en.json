@@ -16,7 +16,7 @@
           "adjustInputLabel": "Magic Overheat to add/subtract",
           "label": "Magic Overheat",
           "withPlaceholders": "%{current} Magic Overheat (%{threshold})",
-          "reminder": "<b>Magic Overheat</b><br>When a mage casts magic, the Spell Intensity they choose equals the amount of <b>Magic Overheat</b> that builds up within them. A higher <b>Magic Overheat</b> results in increasing penalties.",
+          "reminder": "When a mage casts magic, the Spell Intensity they choose equals the amount of Magic Overheat that builds up within them. A higher Magic Overheat results in increasing penalties.",
           "cold": "Cold",
           "coldWithRange": "Cold (%s)",
           "coldWithRangeReminder": "Cold (%s):<br><ul><li><b>Spell-Backfire</b> on complete failure, only.</li></ul>",

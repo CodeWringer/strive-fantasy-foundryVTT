@@ -44,7 +44,9 @@ export default class MagicOverheatViewModelFactory {
     viewModel.vmOverheatReminder = new game.strive.classDef.viewModel.ViewModel({
       id: "vmOverheatReminder",
       parent: viewModel,
-      localizedToolTip: viewModel.showReminders ? game.i18n.localize("strive-fantasy.character.magic.overheat.reminder") : undefined,
+      localizedToolTip: viewModel.showReminders ? 
+        `${game.i18n.localize("strive-fantasy.character.magic.overheat.label")}<br>${game.i18n.localize("strive-fantasy.character.magic.overheat.reminder")}` : 
+        game.i18n.localize("strive-fantasy.character.magic.overheat.label"),
     });
     viewModel.vmOverheat = new game.strive.classDef.viewModel.InputNumberSpinnerViewModel({
       id: "vmOverheat",
