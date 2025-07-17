@@ -6,25 +6,35 @@ export default class TransientBaseCharacterActorExtender {
    */
   extend(obj) {
     obj.magic = {
-      maxMagicStamina() {
-        return new Ruleset().getCharacterMaximumMagicStamina(obj.document)
-      },
-      maxMagicStaminaModifier(value) {
-        if (game.strive.util.validation.isDefined(value)) { // set
-          obj.updateByPath("system.magic.maxMagicStaminaModifier", value);
-        } else { // get
-          return parseInt((obj.document.system.magic ?? {}).maxMagicStaminaModifier ?? 0);
-        }
-      },
-      modifiedMaxMagicStamina() {
-        return obj.magic.maxMagicStamina().total + obj.magic.maxMagicStaminaModifier();
-      },
-      magicStamina(value) {
-        if (game.strive.util.validation.isDefined(value)) { // set
-          obj.updateByPath("system.magic.magicStamina", value);
-        } else { // get
-          return parseInt((obj.document.system.magic ?? {}).magicStamina ?? 0);
-        }
+      overheat: {
+        cold() { return 0; },
+        smoldering() {
+          return new Ruleset().getMagicOverheatThresholds(obj.document).smoldering;
+        },
+        broiling() {
+          return new Ruleset().getMagicOverheatThresholds(obj.document).broiling;
+        },
+        consuming() {
+          return new Ruleset().getMagicOverheatThresholds(obj.document).consuming;
+        },
+        rawConsuming() {
+          return new Ruleset().getMagicOverheatThresholds(obj.document).rawConsuming;
+        },
+        current(value) {
+          if (game.strive.util.validation.isDefined(value)) { // set
+            // Negative values aren't permitted. 
+            obj.updateByPath("system.magic.overheat.current", Math.max(0, value));
+          } else { // get
+            return parseInt(((obj.document.system.magic ?? {}).overheat ?? {}).current ?? 0);
+          }
+        },
+        modifier(value) {
+          if (game.strive.util.validation.isDefined(value)) { // set
+            obj.updateByPath("system.magic.overheat.modifier", value);
+          } else { // get
+            return parseInt(((obj.document.system.magic ?? {}).overheat ?? {}).modifier ?? 0);
+          }
+        },
       },
     };
   }

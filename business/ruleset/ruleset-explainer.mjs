@@ -5,26 +5,25 @@ import Ruleset from "./ruleset.mjs";
  */
 export default class RulesetExplainer {
   /**
-   * @type {Ruleset}
-   * @readonly
-   * @private
-   */
-  _ruleset = new Ruleset();
-
-  /**
-   * @param {TransientBaseCharacterActor} actor 
+   * Returns a human readable explanation of how the maximum Magic Overheat value came to be. 
+   * 
+   * @param {GameSystemActor} document 
    * 
    * @returns {String}
    */
-  getExplanationForMaxMagicStamina(actor) {
-    const maxMagicStamina = this._ruleset.getCharacterMaximumMagicStamina(actor);
-    const composition = maxMagicStamina.components
-      .map(component => {
-        const name = game.i18n.localize(component.localizableName);
-        const htmlEscapedComponent = game.strive.util.string.escapeHtml(name);
-        return `${htmlEscapedComponent} (${component.value})`;
-      }).join(" + ");
+  getExplanationForMaxOverheat(document) {
+    const thresholds = new Ruleset().getMagicOverheatThresholds(document);
+    const ATTRIBUTES = game.strive.const.ATTRIBUTES;
+    const arcanaLevel = new game.strive.classDef.Ruleset().getEffectiveAttributeModifiedLevel(ATTRIBUTES.arcana, document);
 
-    return `(${composition}) * 2 = ${maxMagicStamina.total}`;
+    return game.strive.util.string.format2(game.i18n.localize("strive-fantasy.character.magic.overheat.maxExplanation"), {
+      coldMax: thresholds.smoldering - 1,
+      smolderingMin: thresholds.smoldering,
+      smolderingMax: thresholds.broiling - 1,
+      broilingMin: thresholds.broiling,
+      broilingMax: thresholds.consuming - 1,
+      consuming: thresholds.consuming,
+      arcana: arcanaLevel,
+    });
   }
 }
