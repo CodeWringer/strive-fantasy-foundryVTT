@@ -1,5 +1,4 @@
 import { MagicOverHeatThresholds } from "../../../../../business/document/const/magic-overheat-thresholds.mjs";
-import Ruleset from "../../../../../business/ruleset/ruleset.mjs";
 
 export default class MagicOverheatViewModelFactory {
   create(parent, document) {

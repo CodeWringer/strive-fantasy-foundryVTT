@@ -2,8 +2,13 @@
 viewModel: ViewModel
 --}}
 <div id="{{viewModel.id}}" class="sheet-block flex flex-column flex-grow flex-center">
+  {{!-- Icon --}}
+  <i id="{{viewModel.vmOverheatReminder.id}}" class="ico dark ico-gauge-line" style="width: 48px; height: 48px;"></i>
+  {{!-- Current Value --}}
+  {{> inputNumberSpinner viewModel=viewModel.vmOverheat cssClass="width-md" }}
+  {{!-- Range --}}
   {{#if viewModel.showRangeSlider}}
-  <div class="fill" style="width: calc(100% - 32px);">
+  <div style="width: calc(100% - 32px);">
     <div class="flex flex-row fill" style="position: relative; height: 32px;">
       <div id="{{viewModel.vmThresholdCold.id}}" class="flex flex-column" style="position: absolute; left: -16px;">
         <i class="ico dark ico-magic-overheat-cold-solid{{#if viewModel.isActiveCold}} active{{/if}}" style="height: 32px;"></i>
@@ -21,10 +26,4 @@ viewModel: ViewModel
     {{> inputSlider viewModel=viewModel.vmOverheatSlider }}
   </div>
   {{/if}}
-  <div class="flex flex-row ">
-    <i id="{{viewModel.vmOverheatReminder.id}}" class="ico dark ico-gauge-line" style="width: 26px; height: 26px;"></i>
-    <span class="width-md">
-      {{> inputNumberSpinner viewModel=viewModel.vmOverheat cssClass="" }}
-    </span>
-  </div>
 </div>
