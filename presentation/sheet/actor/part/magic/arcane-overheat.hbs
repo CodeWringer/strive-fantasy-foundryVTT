@@ -50,7 +50,7 @@ viewModel: ViewModel
       <span id="{{viewModel.vmOverheatSliderSlag.id}}" class="border-solid-sm custom-system-read-only" style="width: {{viewModel.slagPercentage}}%; height: 8px; min-height: 8px;"></span>
       {{/if}}
       {{#if viewModel.showRangeSlider}}
-      <span style="width: {{viewModel.sliderPercentage}}%;">
+      <span class="flex flex-middle" style="width: {{viewModel.sliderPercentage}}%;">
         {{> inputSlider viewModel=viewModel.vmOverheatSlider }}
       </span>
       {{/if}}
