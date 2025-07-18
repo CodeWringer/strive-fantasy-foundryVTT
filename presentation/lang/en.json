@@ -15,7 +15,8 @@
           "adjust": "Adjust Arcane Overheat",
           "adjustInputLabel": "Arcane Overheat to add/subtract",
           "label": "Arcane Overheat",
-          "withPlaceholders": "%{current} Arcane Overheat (%{threshold})",
+          "withPlaceholders": "%{slag} Arcane Slag + %{current} Arcane Overheat",
+          "rangeWithPlaceholders": "%{current} Arcane Overheat (%{threshold})",
           "reminder": "When a mage casts magic, the Spell Intensity they choose equals the amount of Arcane Overheat that builds up within them. A higher Arcane Overheat results in increasing penalties.",
           "cold": "Cold",
           "coldWithRange": "Cold (%s)",
@@ -31,6 +32,11 @@
           "consumingWithRangeReminder": "Consuming (%s):<br><ul><li><code>1D8 + 2</code> Pure damage every Tick</li><li><b>Every</b> further attempt to cast a spell instantly <b>fails</b></li><li>For <b>all</b> <i>other</i> tests, <code>-2D</code></li></ul>",
           "maxWithModifier": "Maximum Arcane Overheat<br>%{maximum} %{operand} %{modifier} (modifier) = %{finalValue}",
           "maxExplanation": "Cold: 0 through %{coldMax} (= %{arcana} (Arcana))<br>Smoldering: %{smolderingMin} (= %{arcana} (Arcana) + 1) through %{smolderingMax} (= %{arcana} (Arcana) * 2)<br>Broiling: %{broilingMin} ((= %{arcana} (Arcana) * 2) + 1) through %{broilingMax} (= %{arcana} (Arcana) * 3)<br>Consuming: %{consuming} ((= %{arcana} (Arcana) * 3) + 1)"
+        },
+        "slag": {
+          "label": "Arcane Slag",
+          "reminder": "Whenever a mage casts magic, they build up <code>+1</code> point of Arcane Slag. Arcane Slag equals the base Arcane Overheat that has built up within them.<br><code>1</code> point of Arcane Slag automatically leaves the body every <code>6</code> hours. If that time is spent in active rest or meditation - that means doing <i>nothing</i> besides rest -, then <code>2</code> points leave the body, instead.",
+          "withPlaceholders": "%{slag} Arcane Slag"
         },
         "school": "Magic School"
       },

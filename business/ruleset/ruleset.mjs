@@ -23,11 +23,11 @@ export default class Ruleset {
     const transientActor = actor.getTransientObject();
 
     const overheatModifier = transientActor.magic.overheat.modifier();
-    const arcanaLevel = ruleset.getEffectiveAttributeModifiedLevel(ATTRIBUTES.arcana, actor);
+    const arcanaLevel = Math.max(1, ruleset.getEffectiveAttributeModifiedLevel(ATTRIBUTES.arcana, actor));
     return {
-      smoldering: Math.max(1, (arcanaLevel + 1) + overheatModifier),
-      broiling: Math.max(2, ((arcanaLevel * 2) + 1) + overheatModifier),
-      consuming: Math.max(3, ((arcanaLevel * 3) + 1) + overheatModifier),
+      smoldering: (arcanaLevel + 1) + overheatModifier,
+      broiling: ((arcanaLevel * 2) + 1) + overheatModifier,
+      consuming: ((arcanaLevel * 3) + 1) + overheatModifier,
       rawConsuming: (arcanaLevel * 3) + 1,
     };
   }

@@ -25,17 +25,27 @@ export default class TransientBaseCharacterActorExtender {
             // Negative values aren't permitted. 
             obj.updateByPath("system.magic.overheat.current", Math.max(0, value));
           } else { // get
-            return parseInt(((obj.document.system.magic ?? {}).overheat ?? {}).current ?? 0);
+            return parseInt(obj.getByPath("system.magic.overheat.current") ?? 0);
           }
         },
+        currentWithSlag() { return obj.magic.slag.current() +  this.current(); },
         modifier(value) {
           if (game.strive.util.validation.isDefined(value)) { // set
             obj.updateByPath("system.magic.overheat.modifier", value);
           } else { // get
-            return parseInt(((obj.document.system.magic ?? {}).overheat ?? {}).modifier ?? 0);
+            return parseInt(obj.getByPath("system.magic.overheat.modifier") ?? 0);
           }
         },
       },
+      slag: {
+        current(value) {
+          if (game.strive.util.validation.isDefined(value)) { // set
+            obj.updateByPath("system.magic.slag.current", value);
+          } else { // get
+            return parseInt(obj.getByPath("system.magic.slag.current") ?? 0);
+          }
+        }
+      }
     };
   }
 }
