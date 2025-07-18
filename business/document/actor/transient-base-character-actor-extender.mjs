@@ -9,16 +9,16 @@ export default class TransientBaseCharacterActorExtender {
       overheat: {
         cold() { return 0; },
         smoldering() {
-          return new Ruleset().getMagicOverheatThresholds(obj.document).smoldering;
+          return new Ruleset().getArcaneOverheatThresholds(obj.document).smoldering;
         },
         broiling() {
-          return new Ruleset().getMagicOverheatThresholds(obj.document).broiling;
+          return new Ruleset().getArcaneOverheatThresholds(obj.document).broiling;
         },
         consuming() {
-          return new Ruleset().getMagicOverheatThresholds(obj.document).consuming;
+          return new Ruleset().getArcaneOverheatThresholds(obj.document).consuming;
         },
         rawConsuming() {
-          return new Ruleset().getMagicOverheatThresholds(obj.document).rawConsuming;
+          return new Ruleset().getArcaneOverheatThresholds(obj.document).rawConsuming;
         },
         current(value) {
           if (game.strive.util.validation.isDefined(value)) { // set

@@ -3,7 +3,7 @@
  */
 export default class Ruleset {
   /**
-   * Returns the Magic Overheat thresholds of the given actor. 
+   * Returns the Arcane Overheat thresholds of the given actor. 
    * 
    * @param {GameSystemActor} actor 
    * 
@@ -12,7 +12,7 @@ export default class Ruleset {
    * * `broiling: Number`
    * * `consuming: Number`
    */
-  getMagicOverheatThresholds(actor) {
+  getArcaneOverheatThresholds(actor) {
     const ACTOR_TYPES = game.strive.const.ACTOR_TYPES; 
     const ATTRIBUTES = game.strive.const.ATTRIBUTES; 
     const ruleset = new game.strive.classDef.Ruleset(); 

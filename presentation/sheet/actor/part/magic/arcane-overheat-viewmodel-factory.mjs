@@ -1,7 +1,7 @@
-import { MagicOverHeatThresholds } from "../../../../../business/document/const/magic-overheat-thresholds.mjs";
+import { ArcaneOverHeatThresholds } from "../../../../../business/document/const/arcane-overheat-thresholds.mjs";
 import RulesetExplainer from "../../../../../business/ruleset/ruleset-explainer.mjs";
 
-export default class MagicOverheatViewModelFactory {
+export default class ArcaneOverheatViewModelFactory {
   create(parent, document) {
     const viewModel = new game.strive.classDef.viewModel.ViewModel({
       id: "vmMagic",
@@ -21,20 +21,20 @@ export default class MagicOverheatViewModelFactory {
 
     const getThresholdFor = (value) => {
       if (value < viewModel.overheatSmoldering)
-        return MagicOverHeatThresholds.COLD;
+        return ArcaneOverHeatThresholds.COLD;
       else if (value < viewModel.overheatBroiling)
-        return MagicOverHeatThresholds.SMOLDERING;
+        return ArcaneOverHeatThresholds.SMOLDERING;
       else if (value < viewModel.overheatConsuming)
-        return MagicOverHeatThresholds.BROILING;
+        return ArcaneOverHeatThresholds.BROILING;
       else
-        return MagicOverHeatThresholds.CONSUMING;
+        return ArcaneOverHeatThresholds.CONSUMING;
     };
 
     const currentHeat = getThresholdFor(document.magic.overheat.current());
-    viewModel.isActiveCold = currentHeat.name === MagicOverHeatThresholds.COLD.name;
-    viewModel.isActiveSmoldering = currentHeat.name === MagicOverHeatThresholds.SMOLDERING.name;
-    viewModel.isActiveBroiling = currentHeat.name === MagicOverHeatThresholds.BROILING.name;
-    viewModel.isActiveConsuming = currentHeat.name === MagicOverHeatThresholds.CONSUMING.name;
+    viewModel.isActiveCold = currentHeat.name === ArcaneOverHeatThresholds.COLD.name;
+    viewModel.isActiveSmoldering = currentHeat.name === ArcaneOverHeatThresholds.SMOLDERING.name;
+    viewModel.isActiveBroiling = currentHeat.name === ArcaneOverHeatThresholds.BROILING.name;
+    viewModel.isActiveConsuming = currentHeat.name === ArcaneOverHeatThresholds.CONSUMING.name;
 
     const ATTRIBUTES = game.strive.const.ATTRIBUTES; 
     const ruleset = new game.strive.classDef.Ruleset(); 

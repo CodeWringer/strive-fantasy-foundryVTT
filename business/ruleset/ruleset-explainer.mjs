@@ -5,14 +5,14 @@ import Ruleset from "./ruleset.mjs";
  */
 export default class RulesetExplainer {
   /**
-   * Returns a human readable explanation of how the maximum Magic Overheat value came to be. 
+   * Returns a human readable explanation of how the maximum Arcane Overheat value came to be. 
    * 
    * @param {GameSystemActor} document 
    * 
    * @returns {String}
    */
   getExplanationForMaxOverheat(document) {
-    const thresholds = new Ruleset().getMagicOverheatThresholds(document);
+    const thresholds = new Ruleset().getArcaneOverheatThresholds(document);
     const ATTRIBUTES = game.strive.const.ATTRIBUTES;
     const arcanaLevel = new game.strive.classDef.Ruleset().getEffectiveAttributeModifiedLevel(ATTRIBUTES.arcana, document);
 
