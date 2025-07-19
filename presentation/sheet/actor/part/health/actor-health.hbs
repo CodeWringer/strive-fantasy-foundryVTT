@@ -59,16 +59,16 @@ cssClass: {undefined | String}
         {{> (template) viewModel=../viewModel.vmDeathsDoor}}
       {{/with}}
       {{/if}}
+      {{!-- Conditions --}}
+      {{#with viewModel.healthConditionsTemplate as | template |}}
+        {{> (template) viewModel=../viewModel.vmHealthConditions }}
+      {{/with}}
       {{!-- Armor --}}
       {{#if viewModel.vmArmorListItem}}
       {{#with viewModel.armorListItemTemplate as | template |}}
         {{> (template) viewModel=../viewModel.vmArmorListItem }}
       {{/with}}
       {{/if}}
-      {{!-- Conditions (formerly health states) --}}
-      {{#with viewModel.healthStatesTemplate as | template |}}
-        {{> (template) viewModel=../viewModel.vmHealthStates}}
-      {{/with}}
     </div>
   </div>
   {{!-- Injuries --}}
