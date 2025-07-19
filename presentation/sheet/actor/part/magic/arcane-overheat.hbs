@@ -3,15 +3,17 @@ viewModel: ViewModel
 --}}
 <div id="{{viewModel.id}}" class="sheet-block flex flex-column flex-grow flex-middle">
   <div class="flex flex-row auto-margin-h-sm">
-    <div class="flex flex-column">
+    {{!-- Arcane Slag --}}
+    <div class="flex flex-column flex-middle">
       {{!-- Icon --}}
-      <i id="{{viewModel.vmSlagReminder.id}}" class="ico dark ico-gauge-line" style="width: 48px; height: 48px;"></i>
+      <i id="{{viewModel.vmSlagReminder.id}}" class="ico dark ico-arcane-slag" style="width: 32px; height: 32px; margin-top: 8px; margin-bottom: 8px;"></i>
       <div class="flex flex-row flex-middle">
         {{!-- Current Value --}}
         {{> inputNumberSpinner viewModel=viewModel.vmSlag cssClass="width-md" }}
       </div>
     </div>
-    <div class="flex flex-column">
+    {{!-- Arcane Overheat --}}
+    <div class="flex flex-column flex-middle">
       {{!-- Icon --}}
       <i id="{{viewModel.vmOverheatReminder.id}}" class="ico dark ico-gauge-line" style="width: 48px; height: 48px;"></i>
       <div class="flex flex-row flex-middle">
