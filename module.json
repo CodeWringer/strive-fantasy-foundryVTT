@@ -13,7 +13,8 @@
   ],
   "compatibility": {
     "minimum": 11,
-    "verified": 12.330
+    "maximum": 12,
+    "verified": 12.343
   },
   "esmodules": [
     "module.mjs"
