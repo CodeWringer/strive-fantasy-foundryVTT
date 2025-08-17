@@ -14,6 +14,11 @@ const basePath = "modules/strive-fantasy-module";
  */
 const basePathPresentation = `${basePath}/presentation`;
 
+/**
+ * Contains the relative paths to **all** templates contained in this module. 
+ * 
+ * @constant
+ */
 export const TEMPLATES = {
   ACTOR_HEALTH: `${basePathPresentation}/sheet/actor/part/health/actor-health.hbs`,
   ACTOR_MAGIC_OVERHEAT: `${basePathPresentation}/sheet/actor/part/magic/arcane-overheat.hbs`,
@@ -31,9 +36,12 @@ export async function preloadHandlebarsTemplates() {
   for (const propertyName in TEMPLATES) {
     templateArr.push(TEMPLATES[propertyName]);
   }
-  return await loadTemplates(templateArr);
+  return await new game.strive.classDef.FoundryWrapper().loadTemplates(templateArr);
 };
 
+/**
+ * Overrides templates of the system. 
+ */
 export function overrideTemplates() {
   game.strive.const.TEMPLATES.ACTOR_HEALTH = TEMPLATES.ACTOR_HEALTH;
 }
