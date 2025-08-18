@@ -35,7 +35,7 @@
         },
         "slag": {
           "label": "Arcane Slag",
-          "reminder": "Whenever a mage casts magic, they build up <code>+1</code> point of Arcane Slag. Arcane Slag equals the base Arcane Overheat that has built up within them.<br><code>1</code> point of Arcane Slag automatically leaves the body every <code>6</code> hours. If that time is spent in active rest or meditation - that means doing <i>nothing</i> besides rest -, then <code>2</code> points leave the body, instead.",
+          "reminder": "When a mage casts magic, <b>one third</b> (RD and minimum <code>1</code>) of the Spell Intensity they choose equals the amount of Arcane Slag that builds up within them. The other two thirds turn into Arcane Overheat.<br><code>1</code> point of <b>Arcane Slag</b> automatically leaves the character's body, every <code>6</code> hours. If that time is spent in active rest or meditation - that means doing <i>nothing</i> besides rest -, then <code>2</code> points leave the body, instead.",
           "withPlaceholders": "%{slag} Arcane Slag"
         },
         "school": "Magic School"
