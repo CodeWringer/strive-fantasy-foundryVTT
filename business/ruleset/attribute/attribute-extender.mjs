@@ -9,7 +9,8 @@ export class AttributeExtender {
     game.strive.const.ATTRIBUTES.arcana = new game.strive.classDef.Attribute({
       name: "arcana",
       localizableName: "strive-fantasy.character.attribute.arcana.label",
-      localizableAbbreviation: "strive-fantasy.character.attribute.arcana.abbreviation"
+      localizableAbbreviation: "strive-fantasy.character.attribute.arcana.abbreviation",
+      icon: "ico-arcana-solid",
     });
   }
 }
