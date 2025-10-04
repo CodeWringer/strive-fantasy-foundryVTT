@@ -20,7 +20,7 @@ const basePathPresentation = `${basePath}/presentation`;
  * @constant
  */
 export const TEMPLATES = {
-  ACTOR_HEALTH: `${basePathPresentation}/sheet/actor/part/health/actor-health.hbs`,
+  ACTOR_HEALTH_GENERAL_STATS: `${basePathPresentation}/sheet/actor/part/health/actor-general-health-stats.hbs`,
   ACTOR_MAGIC_OVERHEAT: `${basePathPresentation}/sheet/actor/part/magic/arcane-overheat.hbs`,
 }
 
@@ -43,5 +43,5 @@ export async function preloadHandlebarsTemplates() {
  * Overrides templates of the system. 
  */
 export function overrideTemplates() {
-  game.strive.const.TEMPLATES.ACTOR_HEALTH = TEMPLATES.ACTOR_HEALTH;
+  game.strive.const.TEMPLATES.ACTOR_HEALTH_GENERAL_STATS = TEMPLATES.ACTOR_HEALTH_GENERAL_STATS;
 }
