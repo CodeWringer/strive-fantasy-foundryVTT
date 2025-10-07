@@ -172,7 +172,7 @@ export default class ArcaneOverheatViewModelFactory {
               current: newValue,
               threshold: game.i18n.localize(getThresholdFor(newValue).localizableName),
             }
-          )
+          );
         },
       });
     }
