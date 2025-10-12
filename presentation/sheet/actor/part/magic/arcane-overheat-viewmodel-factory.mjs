@@ -88,7 +88,7 @@ export default class ArcaneOverheatViewModelFactory {
       id: "vmAdjustOverheat",
       parent: viewModel,
       localizedToolTip: game.i18n.localize("strive-fantasy.character.magic.overheat.adjust"),
-      iconHtml: '<i class="fas fa-edit"></i>',
+      content: '<i class="fas fa-edit"></i>',
       onClick: async () => {
         const inputNumber = "inputNumber";
         const dialog = await new game.strive.classDef.dialog.DynamicInputDialog({
