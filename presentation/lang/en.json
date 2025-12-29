@@ -19,17 +19,25 @@
           "rangeWithPlaceholders": "%{current} Arcane Overheat (%{threshold})",
           "reminder": "When a mage casts magic, the Spell Intensity they choose equals the amount of Arcane Overheat that builds up within them. A higher Arcane Overheat results in increasing penalties.",
           "cold": "Cold",
-          "coldWithRange": "Cold (%s)",
-          "coldWithRangeReminder": "Cold (%s):<br><ul><li><b>Spell-Backfire</b> on complete failure, only.</li></ul>",
+          "coldReminder": {
+            "1": "Spell-Backfire on complete failure, only."
+          },
           "smoldering": "Smoldering",
-          "smolderingWithRange": "Smoldering (%s)",
-          "smolderingWithRangeReminder": "Smoldering (%s):<br><ul><li>Ob for magic tests always increased by <code>+1</code> and <b>Spell-Backfire</b> on less than <code>2</code> hits.</li></ul>",
+          "smolderingReminder": {
+            "1": "Every time the mage casts a spell, their <b>Ob</b> is always increased by <code>+1</code>. Less than <code>2</code> hits causes a Spell-Backfire.",
+            "2": "All spells are super-charged, with an automatic and free <code>+1</code> SI."
+          },
           "broiling": "Broiling",
-          "broilingWithRange": "Broiling (%s)",
-          "broilingWithRangeReminder": "Broiling (%s):<br><ul><li>Ob for magic tests always increased by <code>+2</code> and <b>Spell-Backfire</b> on less than <code>3</code> hits.</li><li>For <b>all</b> <i>other</i> tests, <code>-1D</code>.</li></ul>",
+          "broilingReminder": {
+            "1": "The <b>Ob</b> for <b>all</b> tests is always increased by <code>+1</code>. Less than <code>3</code> <b>hits</b> causes a Spell-Backfire.",
+            "2": "All spells are super-charged, with an automatic and free <code>+2</code> SI."
+          },
           "consuming": "Consuming",
-          "consumingWithRange": "Consuming (%s)",
-          "consumingWithRangeReminder": "Consuming (%s):<br><ul><li><code>1D8 + 2</code> Pure damage every Tick. At the end of every tick, reduces Arcane Slag and Arcane Overheat by <code>-1</code> point, each.</li><li><b>Every</b> further attempt to cast a spell instantly <b>fails</b>.</li><li>For <b>all</b> <i>other</i> tests, <code>-2D</code>.</li></ul>",
+          "consumingReminder": {
+            "1": "<code>1D8 + 2</code> Pure damage every Tick. At the end of every tick, reduces Arcane Slag and Arcane Overheat by <code>-1</code> point, each.",
+            "2": "The <b>Ob</b> for <b>all</b> tests is always increased by <code>+2</code>. Less than <code>4</code> <b>hits</b> causes a Spell-Backfire.",
+            "3": "All spells are super-charged, with an automatic and free <code>+3</code> SI."
+          },
           "maxWithModifier": "Maximum Arcane Overheat<br>%{maximum} %{operand} %{modifier} (modifier) = %{finalValue}",
           "maxExplanation": "Cold: 0 through %{coldMax} (= %{arcana} (Arcana))<br>Smoldering: %{smolderingMin} (= %{arcana} (Arcana) + 1) through %{smolderingMax} (= %{arcana} (Arcana) * 2)<br>Broiling: %{broilingMin} ((= %{arcana} (Arcana) * 2) + 1) through %{broilingMax} (= %{arcana} (Arcana) * 3)<br>Consuming: %{consuming} ((= %{arcana} (Arcana) * 3) + 1)"
         },
